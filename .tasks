@@ -1,0 +1,33 @@
+# vim: set fenc=utf-8 ft=dosini:
+# see: https://github.com/skywind3000/asynctasks.vim/wiki/Task-Config
+
+[cmake-reconfigure:release]
+command=rm -rf build; cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --build build
+output=quickfix
+cwd=$(VIM_ROOT)
+save=2
+
+[cmake-reconfigure:debug]
+command=rm -rf build; cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build
+output=quickfix
+cwd=$(VIM_ROOT)
+save=2
+
+[cmake-build-run-main]
+command=cmake --build build && ./build/main
+output=quickfix
+cwd=$(VIM_ROOT)
+save=2
+
+[cmake-build-run-test]
+command=cmake --build build && ./build/test
+output=quickfix
+cwd=$(VIM_ROOT)
+save=2
+
+[cmake-build-disassamble]
+command=cmake --build build && objdump -dS build/main > main.txt; objdump -dS build/test > test.txt
+output=quickfix
+cwd=$(VIM_ROOT)
+save=2
+
