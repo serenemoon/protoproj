@@ -23,6 +23,7 @@ struct DataList {
  *
  * Usage:
  *  using DP = DataPairs<1, 10, 2, 20, 0>;
+ *  auto u = DP{}[2];     // u == 20
  *  auto v = DP::ValueOfKey(1); // v == 10
  *  auto w = DP::ValueOfKey(3); // w == 0
  */
@@ -31,7 +32,7 @@ struct DataPairs {
     static_assert(sizeof...(vs) % 2 == 0, "DataPairs Must be odd, and > 3");
 
     template <typename T>
-    static auto ValueOfKey(T val)
+    static constexpr auto ValueOfKey(T val)
     {
         if constexpr (sizeof...(vs) == 0) {
             return val == x ? y : z;
@@ -39,6 +40,9 @@ struct DataPairs {
             return val == x ? y : DataPairs<z, vs...>::ValueOfKey(val);
         }
     }
+
+    template <typename T>
+    constexpr auto operator[](T val) { return ValueOfKey(val); }
 };
 } /* Sdo */ 
 
