@@ -30,6 +30,9 @@ int main(int argc, char *argv[])
     LOG_EVAL(DP{}[a[0]]);
     LOG_EVAL(DP{}[a[1]]);
 
+    LOG_VARS(a[0], a[1]);
+    LOG_VARS(a[1], Number::Add(3, 4));
+
     Test();
     return 0;
 }
