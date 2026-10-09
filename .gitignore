@@ -32,7 +32,9 @@
 *.app
 
 build/
+.nvim.lua
 main.txt
 test.txt
 o.txt
 .cache
+compile_commands.json

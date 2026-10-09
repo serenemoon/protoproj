@@ -1,13 +1,13 @@
-#include <iostream>
-#include <vector>
-#include <list>
 #include "Number.h"
 #include "Sdo.h"
 #include "TypeName.h"
+#include <iostream>
+#include <list>
+#include <vector>
 
 int g_q = 1;
 
-using DP = Sdo::DataPairs<0x24,0x35,0x46,0x57,0x68,0x79,255>;
+using DP = Sdo::DataPairs<0x24, 0x35, 0x46, 0x57, 0x68, 0x79, 255>;
 void Test() {
     g_q = DP::ValueOfKey(g_q);
     g_q = DP{}[g_q];

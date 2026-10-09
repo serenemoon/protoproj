@@ -14,20 +14,23 @@ cwd=$(VIM_ROOT)
 save=2
 
 [cmake-build-run-main]
-command=cmake --build build && ./build/main
+command/linux=cmake --build build && ./build/main
+command/win32=cmake --build build && .\build\main
 output=quickfix
 cwd=$(VIM_ROOT)
 save=2
 
 [cmake-build-run-test]
-command=cmake --build build && ./build/test
-output=quickfix
+command/linux=cmake --build build && ./build/test
+command/win32=cmake --build build && .\build\test
+output=terminal
 cwd=$(VIM_ROOT)
 save=2
 
 [cmake-build-disassamble]
-command=cmake --build build && objdump -dS build/main > main.txt; objdump -dS build/test > test.txt
-output=quickfix
+command/linux=cmake --build build && objdump -dS build/main > main.txt; objdump -dS build/test > test.txt
+command/win32=cmake --build build && objdump -dS build\main.exe > main.txt && objdump -dS build\test.exe > test.txt
+output=terminal
 cwd=$(VIM_ROOT)
 save=2
 
